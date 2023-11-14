@@ -3,6 +3,9 @@ package com.JavaPractice;
 import java.util.Scanner;
 
 public class simulation14503 {
+    /* 나중에 리팩토링해볼것
+    * 문제번호 : https://www.acmicpc.net/problem/14503
+    * */
 
     static int N;
     static int M;
@@ -61,6 +64,53 @@ public class simulation14503 {
         boolean stop = false;
         while (!stop) {
             if (room[nowPoint[0]][nowPoint[1]] == 0) {
+                room[nowPoint[0]][nowPoint[1]] = 1;
+                cleanUpCount += 1;
+            }
+
+            boolean sideChange = false;
+            // 사방으로 청소할 칸이 있는지 검사
+            for (int i = 0; i < 4; i++) {
+                int y = nowPoint[0] + dy[i];
+                int x = nowPoint[1] + dx[i];
+                if (room[y][x] == 0) {
+                    sideChange = true;
+                }
+            }
+
+            if (sideChange == true) { // 사방에 청소할 칸이 있다면 해당 방향으로 전진
+                int y = nowPoint[0] + dy[side];
+                int x = nowPoint[1] + dx[side];
+
+                if (y > 0 && y < N && x > 0 && x < M) { // 벽을 뚫고 나가지 않도록 범위 검사
+                    if (room[y][x] == 0) { // 그리고 청소되지 않은 칸이라면 전진
+                        nowPoint[0] = y;
+                        nowPoint[1] = x;
+                    }
+                }
+            } else {
+                // 사방에 청소할 칸이 없다면 해당 방향으로 후진
+
+                int y = nowPoint[0] - dy[side];
+                int x = nowPoint[1] - dx[side];
+
+                if (y > 0 && y < N && x > 0 && y < M) { // 벽을 뚫고 나가지 않도록 범위 검사
+                    // 이때는 청소된 칸이어도 범위를 넘지않으면 후진
+                    nowPoint[0] = y;
+                    nowPoint[1] = x;
+                }else{
+                    stop = true;
+                }
+            }
+
+        }
+
+    }
+
+    private static void newCleanUp() {
+        boolean stop = false;
+        while (!stop) {
+            if (room[nowPoint[0]][nowPoint[1]] == 0) {
                 room[nowPoint[0]][nowPoint[1]] = 2; // 청소한 곳은 2로 마킹
                 cleanUpCount += 1;
             }
@@ -99,5 +149,6 @@ public class simulation14503 {
             }
         }
     }
+
 
 }
