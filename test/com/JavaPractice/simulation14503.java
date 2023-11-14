@@ -61,48 +61,43 @@ public class simulation14503 {
         boolean stop = false;
         while (!stop) {
             if (room[nowPoint[0]][nowPoint[1]] == 0) {
-                room[nowPoint[0]][nowPoint[1]] = 1;
+                room[nowPoint[0]][nowPoint[1]] = 2; // 청소한 곳은 2로 마킹
                 cleanUpCount += 1;
             }
 
-            boolean sideChange = false;
+            boolean cleaned = false;
+            int originalSide = side; // 현재 방향을 저장해둔다.
+
             // 사방으로 청소할 칸이 있는지 검사
             for (int i = 0; i < 4; i++) {
-                int y = nowPoint[0] + dy[i];
-                int x = nowPoint[1] + dx[i];
-                if (room[y][x] == 0) {
-                    sideChange = true;
-                }
-            }
-
-            if (sideChange = true) { // 사방에 청소할 칸이 있다면 해당 방향으로 전진
+                side = (side + 3) % 4; // 왼쪽으로 회전
                 int y = nowPoint[0] + dy[side];
                 int x = nowPoint[1] + dx[side];
 
-                if (y > 0 && y < N && x > 0 && y < M) { // 벽을 뚫고 나가지 않도록 범위 검사
-                    if (room[y][x] == 0) { // 그리고 청소되지 않은 칸이라면 전진
-                        nowPoint[0] = y;
-                        nowPoint[1] = x;
-                    }
-                }
-            } else {
-                // 사방에 청소할 칸이 없다면 해당 방향으로 후진
-
-                int y = nowPoint[0] - dy[side];
-                int x = nowPoint[1] - dx[side];
-
-                if (y > 0 && y < N && x > 0 && y < M) { // 벽을 뚫고 나가지 않도록 범위 검사
-                    // 이때는 청소된 칸이어도 범위를 넘지않으면 후진
+                if (y >= 0 && y < N && x >= 0 && x < M && room[y][x] == 0) {
                     nowPoint[0] = y;
                     nowPoint[1] = x;
-                }else{
-                    stop = true;
+                    cleaned = true;
+                    break; // 청소하러 이동
                 }
             }
 
+            if (!cleaned) { // 사방에 청소할 칸이 없다면
+                // 반대 방향을 계산하여 후진
+                side = (originalSide + 2) % 4; // 반대 방향
+                int y = nowPoint[0] + dy[side];
+                int x = nowPoint[1] + dx[side];
+
+                // 벽이 아니면 후진
+                if (y >= 0 && y < N && x >= 0 && x < M && room[y][x] != 1) {
+                    nowPoint[0] = y;
+                    nowPoint[1] = x;
+                } else {
+                    stop = true; // 더 이상 후진할 수 없으므로 중지
+                }
+                side = originalSide; // 방향을 원래대로 돌려놓는다.
+            }
         }
-
     }
-
 
 }
