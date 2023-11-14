@@ -44,9 +44,10 @@ public class twoPointer2559 {
         }
         max = preSum;
 
+        // nextSum으로 비교하는 방식이라면 음수인경우
         for (int i = 0; i < N-K; i++) {
             nextSum = preSum - tempList[i] + tempList[i+K];
-            max = Math.max(preSum,nextSum);
+            max = Math.max(max,nextSum);
             preSum = nextSum;
         }
 
