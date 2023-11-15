@@ -6,6 +6,7 @@ import java.util.PriorityQueue;
 import java.util.Scanner;
 
 /*
+문제 : https://www.acmicpc.net/problem/1197
 * 1. 아이디어
 * - MST 기본문제, 외우기
 * - 간선을 인접리스트에 집어넣기
