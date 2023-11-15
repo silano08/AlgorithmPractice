@@ -35,6 +35,7 @@ public class twoPointer2559 {
         }
 
         countMax();
+        scanner.close();
         System.out.println(max);
     }
 
