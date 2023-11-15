@@ -3,7 +3,8 @@ package com.JavaPractice;
 import java.util.Collections;
 import java.util.Scanner;
 
-/*
+/* 문제: https://www.acmicpc.net/problem/11047
+풀이개선 참조 : https://github.com/ChangguHan/codingtestbasic/blob/master/BJ11047.py
 * 1. 아이디어
 * - 거꾸로 for문 큰수부터 더해서 비교
 * - while문으로 목표금액보다 크거나 같기 전까지 더함
@@ -43,6 +44,7 @@ public class greedy11047 {
     private static void coinCount(){
 
         for (int i = N-1; i >= 0; i--) {
+            // while말고 몫과 나머지로 추가하는법도있음..
             while (true){
                 if(money + coinList[i] > K){
                     break;
