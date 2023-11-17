@@ -2,7 +2,7 @@ package com.JavaPractice;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
+import java.util.*;
 import java.util.List;
 
 import static org.junit.Assert.assertArrayEquals;
