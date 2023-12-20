@@ -102,6 +102,7 @@ public class bfstest1 {
         // 훑은 부분을 트래킹하기위해 Deque사용, 노드 재방문X하도록
         Deque<Point> q = new LinkedList<>();
         q.add(new Point(y, x)); // 현재 위치를 큐에 추가
+        check[y][x] = true;
 
         while (!q.isEmpty()) {
             Point current = q.poll(); // 덱에서 탐색 대상을 꺼냄
