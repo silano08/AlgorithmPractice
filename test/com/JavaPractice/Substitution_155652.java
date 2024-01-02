@@ -27,13 +27,13 @@ public class Substitution_155652 {
                 }
 
                 // 이렇게짜면 금지리스트끼리 연달아있는데 다음값으로 넘길수도있으니
-                if(fset.contains(a)){
-                    if(a == 122){
-                        a = 97;
-                    }else{
-                        a += 1;
-                    }
-                }
+//                if(fset.contains(a)){
+//                    if(a == 122){
+//                        a = 97;
+//                    }else{
+//                        a += 1;
+//                    }
+//                }
 
                 for (char f : fset) {
                     if(fset.contains(a)){
