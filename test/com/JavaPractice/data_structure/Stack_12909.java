@@ -1,5 +1,7 @@
 package com.JavaPractice.data_structure;
 
+import java.util.Stack;
+
 public class Stack_12909 {
     // https://school.programmers.co.kr/learn/courses/30/lessons/12909
 

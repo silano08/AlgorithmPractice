@@ -1,4 +1,4 @@
-package com.JavaPractice.substitution;
+package com.JavaPractice.substitution_cipher;
 
 import java.util.HashSet;
 

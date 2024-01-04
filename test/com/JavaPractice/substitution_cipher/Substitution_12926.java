@@ -1,4 +1,4 @@
-package com.JavaPractice.substitution;
+package com.JavaPractice.substitution_cipher;
 
 public class Substitution_12926 {
     // https://school.programmers.co.kr/learn/courses/30/lessons/12926
