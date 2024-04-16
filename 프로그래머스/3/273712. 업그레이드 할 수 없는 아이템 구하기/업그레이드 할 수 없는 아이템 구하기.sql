@@ -1,0 +1,19 @@
+-- 코드를 작성해주세요
+
+# select *
+# from ITEM_INFO O join ITEM_TREE T
+# ON O.ITEM_ID = T.ITEM_ID
+
+select O.ITEM_ID, O.ITEM_NAME, O.RARITY
+from ITEM_INFO O join ITEM_TREE T
+ON O.ITEM_ID = T.ITEM_ID
+where O.ITEM_ID NOT IN (
+    select PARENT_ITEM_ID
+from ITEM_TREE
+where PARENT_ITEM_ID IS NOT NULL
+)
+ORDER BY O.ITEM_ID DESC;
+
+
+# select PARENT_ITEM_ID
+# from ITEM_TREE 
